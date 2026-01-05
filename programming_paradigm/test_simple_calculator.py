@@ -31,5 +31,6 @@ class TestSimpleCalculator(unittest.TestCase):
     def test_division(self):
         self.assertEqual(self.calc.divide(4, 2), 2)
         self.assertEqual(self.calc.divide(0, 2), 0)
-        self.assertEqual(self.calc.divide(2, 0), ZeroDivisionError)
         self.assertEqual(self.calc.divide(1, 2), 0.5)
+        self.assertEqual(self.calc.divide(2, 0), ZeroDivisionError)
+        
