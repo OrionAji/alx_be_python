@@ -1,30 +1,41 @@
+# library_system.py
+
 class Book:
-    def __init__(self, title=str, author=str):
+    def __init__(self, title: str, author: str):
         self.title = title
         self.author = author
-    
-class Ebook(Book):
-    def __init__(self, title=str, author=str, file_size=float):
+
+
+class EBook(Book):
+    def __init__(self, title: str, author: str, file_size: int):
         super().__init__(title, author)
-        self.file_size = file_size  # in MB
+        self.file_size = file_size
+
 
 class PrintBook(Book):
-    def __init__(self, title=str, author=str, page_count=int):
+    def __init__(self, title: str, author: str, page_count: int):
         super().__init__(title, author)
         self.page_count = page_count
-        
+
+
 class Library:
     def __init__(self):
-        self.books = [Book, Ebook, PrintBook]
-    
-    def add_book(self, book: Book):
+        self.books: list[Book] = []
+
+    def add_book(self, book: Book) -> None:
         self.books.append(book)
-    
-    def list_books(self):
+
+    def list_books(self) -> None:
         for book in self.books:
-            if isinstance(book, Ebook):
-                print(f"Ebook: {book.title} by {book.author}, Size: {book.file_size}MB")
+            if isinstance(book, EBook):
+                print(
+                    f"EBook: {book.title} by {book.author}, "
+                    f"File Size: {book.file_size} MB"
+                )
             elif isinstance(book, PrintBook):
-                print(f"Print Book: {book.title} by {book.author}, Pages: {book.page_count}")
+                print(
+                    f"Print Book: {book.title} by {book.author}, "
+                    f"Pages: {book.page_count}"
+                )
             else:
                 print(f"Book: {book.title} by {book.author}")
